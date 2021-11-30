@@ -14,8 +14,16 @@
 
 
 <form action="" method="POST">
-
     {% csrf_token %}
+    {% for error in form.username.errors %}
+         <p class="text-danger">{{ error }}</p>
+    {% endfor %}
+     {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+      {% endif %}
+
     {% for field in form %}
         <p>
             {{ field.label_tag }}<br>
@@ -23,10 +31,8 @@
             {% if field.help_text %}
                 <small style="color: grey">{{ field.help_text }}</small>
             {% endif %}
-            {% for error in field.errors %}
-                <p style="color: #fc7a7a">{{ error }}</p>
-            {% endfor %}
+
         </p>
     {% endfor %}
-    <input type="submit" class="fadeIn third" value="Sign Up">
+    <input type="submit" class="fadeIn third" value="log in ">
 </form>
