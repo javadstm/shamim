@@ -1,0 +1,59 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'list.css' %}"/>
+</head>
+<body>
+
+
+     <form action="" method="GET">
+{{ search.form.as_p }}
+                <button class="btn btn-primary" type="submit">search</button>
+         </form>
+          
+    </li>
+</div>
+
+
+<section class="contacts-library">
+    <ul class="contacts-list">
+        {% for center in centers %}
+
+            <div class="contact-section">
+                <li class="list__item">
+                    <h2 class="contact-name title"> {{ center.name }} center</h2>
+                    <p class="relationship"><span class="relationship-key">address:</span>
+                        <span
+                                class="relationship-value">{{ center.address }}</span></p>
+                    <p class="relationship"><span class="relationship-key">created by:</span> <span
+                            class="relationship-value">{{ center.created_by }}</span></p>
+                    <p class="relationship"><span class="relationship-key">phone:</span> <span
+                            class="relationship-value">{{ center.phone }}</span></p>
+                    <p class="relationship"><span class="relationship-key">state:</span><span
+                            class="relationship-value">{{ center.state }}</span></p>
+                    <p class="relationship"><span class="relationship-key">region:</span> <span
+                            class="relationship-value">{{ center.region }}</span></p>
+                </li>
+                <li class="list__item">
+                    <i class="fas fa-phone"></i>
+                    <i class="fas fa-sms text"></i>
+                </li>
+            </div>
+            </a>
+
+            <hr>
+        {% endfor %}
+    </ul>
+</section>
+</div>
+
+</body>
+</html>
+
+

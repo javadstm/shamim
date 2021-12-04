@@ -1,0 +1,14 @@
+.list__item{
+    list-style: none;
+}
+
+.list__item{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list__item .relationship h1{
+    text-align: center;
+}
