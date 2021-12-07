@@ -9,33 +9,32 @@
 </head>
 <body>
 
-</body>
-</html>
-
-
-
-
 
 <form action="" method="POST">
     {% csrf_token %}
 
 
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
-    {% endfor %}
-</ul>
-{% endif %}
+
+    {% if messages %}
+        <ul class="messages">
+            {% for msg in messages %}
+                <li>
+                    <div class="alert alert-{{ msg.level_tag }}" role="alert">
+                        {{ msg.message }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
     {% if form.errors %}
-       {% for field in form %}
-           {% for error in field.errors %}
-              <div class="alert alert-danger">
-                   <strong>{{ error|escape }}</strong>
-              </div>
-           {% endfor %}
-       {% endfor %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
     {% endif %}
 
 
@@ -53,25 +52,26 @@
     <input type="submit" class="fadeIn third" value="submit">
 
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $("#id_state").change(function () {
+            var url = '{% url "ajax_load_cities" %}'  // get the url of the `load_cities` view
+            var countryId = $(this).val();  // get the selected country ID from the HTML input
 
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script>
-    $("#id_state").change(function () {
-      var url = '{% url "ajax_load_cities" %}'  // get the url of the `load_cities` view
-      var countryId = $(this).val();  // get the selected country ID from the HTML input
+            $.ajax({                       // initialize an AJAX request
+                url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+                data: {
+                    'state': countryId       // add the country id to the GET parameters
+                },
+                success: function (data) {   // `data` is the return of the `load_cities` view function
+                    $("#id_city").html(data);  // replace the contents of the city input with the data that came from the server
+                }
+            });
 
-      $.ajax({                       // initialize an AJAX request
-        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
-        data: {
-          'state': countryId       // add the country id to the GET parameters
-        },
-        success: function (data) {   // `data` is the return of the `load_cities` view function
-          $("#id_city").html(data);  // replace the contents of the city input with the data that came from the server
-        }
-      });
-
-    });
-  </script>
+        });
+    </script>
 
 
-    </form>
+</form>
+</body>
+</html>

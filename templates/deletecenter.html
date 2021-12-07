@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+        <form method="POST">
+            {% csrf_token %}
+		<section class="delete-container">
+			<p>Are you sure you want to delete {{ center.name }}?</p>
+			<div class="delete-contact">
+				<i class="fas fa-trash delete-icon"></i>
+				<button class="delete-button">Delete Contact</button>
+			</div>
+		</section>
+        </form>
+</body>
+</html>
+
+
+{##here should be a form which its method is post for deleting the center#}
+
+

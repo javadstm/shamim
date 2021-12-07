@@ -1,74 +1,91 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'list.css' %}"/>
 </head>
 <body>
+<a href="{% url 'logout' %}">Log Out</a>
+<br><br>
+<a href="{% url 'addcenter' %}">addcenter</a>
+<br><br>
+<a href="{% url 'userlist' %}">users</a>
 
+    <h3>{{ page.number }}</h3>
 
 <form action="" method="GET">
     {{ search.form.as_p }}
     <button class="btn btn-primary" type="submit">search</button>
 </form>
 
-</li>
-</div>
-
-
-<section class="contacts-library">
-    {% for center in centers %}
-
-        <table style="width:100%">
-            <tr>
-                <th>name</th>
-                <th>address</th>
-                <th>phone</th>
-                <th>state</th>
-                <th>region</th>
-            </tr>
+<div class="evaluate__list-table-wrapper">
+    <table class="evaluate__list-table">
+        <thead class="evaluate__list-table-header">
+        <tr>
+            <th>name</th>
+            <th>address</th>
+            <th>phone</th>
+            <th>state</th>
+            <th>region</th>
+            <th>Manage</th>
+        </tr>
+        </thead>
+        <tbody class="evaluate__list-table-body">
+        {% for center in page.object_list %}
             <tr>
                 <td>{{ center.name }}</td>
                 <td>{{ center.address }}</td>
                 <td>{{ center.phone }}</td>
                 <td>{{ center.state }}</td>
                 <td>{{ center.city }}</td>
+                <td>
+                    <div class="buttons">
+                        <a href="{% url 'editcenter' center.id %}" class="button edit">edit</a>
+                        <a href="{% url 'deletecenter' center.id %}" class="button delete">delete</a>
+                    </div>
+                </td>
             </tr>
-        </table>
-    {% endfor %}
-    {#</table>#}
-    {##}
-    {#            <div class="contact-section">#}
-    {#                <li class="list__item">#}
-    {#                    <h2 class="contact-name title"> {{ center.name }} center</h2>#}
-    {#                    <p class="relationship"><span class="relationship-key">address:</span>#}
-    {#                        <span#}
-    {#                                class="relationship-value">{{ center.address }}</span></p>#}
-    {#                    <p class="relationship"><span class="relationship-key">created by:</span> <span#}
-    {#                            class="relationship-value">{{ center.created_by }}</span></p>#}
-    {#                    <p class="relationship"><span class="relationship-key">phone:</span> <span#}
-    {#                            class="relationship-value">{{ center.phone }}</span></p>#}
-    {#                    <p class="relationship"><span class="relationship-key">state:</span><span#}
-    {#                            class="relationship-value">{{ center.state }}</span></p>#}
-    {#                    <p class="relationship"><span class="relationship-key">region:</span> <span#}
-    {#                            class="relationship-value">{{ center.region }}</span></p>#}
-    {#                </li>#}
-    {#                <li class="list__item">#}
-    {#                    <i class="fas fa-phone"></i>#}
-    {#                    <i class="fas fa-sms text"></i>#}
-    {#                </li>#}
-    {#            </div>#}
-    {#            </a>#}
-    {##}
-    {#            <hr>#}
-    {#      #}
-    {#    </ul>#}
-</section>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+</div>
+    {% if page.has_previous %}
+        <a href="{% url 'listcenter' %}?page={{ page.previous_page_number }}">previous page </a>
+    {% endif %}
+
+
+    {% if page.has_next %}
+       <a href=" {% url 'listcenter' %}?page={{ page.next_page_number}}">next page </a>
+    {% endif %}
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_state").change(function () {
+        var url = '{% url "ajax_load_cities" %}'  // get the url of the `load_cities` view
+        var countryId = $(this).val();  // get the selected country ID from the HTML input
+
+        $.ajax({                       // initialize an AJAX request
+            url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+            data: {
+                'state': countryId       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+                $("#id_city").html(data);  // replace the contents of the city input with the data that came from the server
+            }
+        });
+
+    });
+</script>
+
 
 </body>
 </html>

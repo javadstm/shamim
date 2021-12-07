@@ -9,20 +9,17 @@
 </head>
 <body>
 
-</body>
-</html>
-
 
 <form action="" method="POST">
     {% csrf_token %}
     {% for error in form.username.errors %}
-         <p class="text-danger">{{ error }}</p>
+        <p class="text-danger">{{ error }}</p>
     {% endfor %}
-     {% if form.non_field_errors %}
-            {% for error in form.non_field_errors %}
-                <p class="text-danger">{{ error }}</p>
-            {% endfor %}
-      {% endif %}
+    {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+            <p class="text-danger">{{ error }}</p>
+        {% endfor %}
+    {% endif %}
 
     {% for field in form %}
         <p>
@@ -36,3 +33,7 @@
     {% endfor %}
     <input type="submit" class="fadeIn third" value="log in ">
 </form>
+
+
+</body>
+</html>

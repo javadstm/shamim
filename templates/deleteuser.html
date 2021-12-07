@@ -1,0 +1,10 @@
+<form method="POST">
+    {% csrf_token %}
+    <section class="delete-container">
+        <p>Are you sure you want to delete {{ user.first_name }} + {{ user.last_name }}?</p>
+        <div class="delete-contact">
+            <i class="fas fa-trash delete-icon"></i>
+            <button class="delete-button">Delete user</button>
+        </div>
+    </section>
+</form>

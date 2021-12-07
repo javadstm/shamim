@@ -1,17 +1,23 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+
+
+
 {% if message %}
     {{ message }}
 {% endif %}
 
+
+
+{% if messages %}
+    <ul class="messages">
+        {% for msg in messages %}
+            <li>
+                <div class="alert alert-{{ msg.level_tag }}" role="alert">
+                    {{ msg.message }}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
 {% for error in field.errors %}
     <p style="color: #fc7a7a">{{ error }}</p>
@@ -31,12 +37,10 @@
         </p>
 
     {% endfor %}
-    <button type="submit" class="button">Save Contact</button>
+
+
+
+    <button type="submit" class="button">Save user</button>
 
 
 </form>
-</body>
-</html>
-
-
-

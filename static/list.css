@@ -1,14 +1,63 @@
-.list__item{
-    list-style: none;
+body {
+    background-color: #f8f9fd;
 }
 
-.list__item{
-    width:100%;
+.evaluate__list-table-wrapper {
+    width: 60%;
+    margin: 20px auto;
+}
+
+.evaluate__list-table {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+}
+
+.evaluate__list-table-header {
+    background-color: rgb(153, 177, 156);
+}
+
+.evaluate__list-table-header tr th {
+    border: none;
+    padding: 8px;
+}
+
+.evaluate__list-table-body {
+    background-color: #fff;
+}
+
+.evaluate__list-table-body tr td {
+    padding: 8px;
+    text-align: center;
+}
+
+.evaluate__list-table-body tr td .buttons {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-.list__item .relationship h1{
-    text-align: center;
+.evaluate__list-table-body tr td .buttons .button {
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 0;
+    padding: 4px 8px;
+    text-decoration: none;
+}
+
+.evaluate__list-table-body tr td .buttons .button.edit {
+    background-color: rgb(66, 66, 206);
+}
+
+.evaluate__list-table-body tr td .buttons .button.delete {
+    background-color: rgb(223, 87, 87);
+}
+
+.evaluate__list-table-body tr td .buttons .button.edit:hover {
+    background-color: rgb(15, 15, 247);
+}
+
+.evaluate__list-table-body tr td .buttons .button.delete:hover {
+    background-color: rgb(245, 8, 8);
 }
