@@ -1,27 +1,9 @@
 
 
 
-{% if message %}
-    {{ message }}
-{% endif %}
 
-
-
-{% if messages %}
-    <ul class="messages">
-        {% for msg in messages %}
-            <li>
-                <div class="alert alert-{{ msg.level_tag }}" role="alert">
-                    {{ msg.message }}
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
-{% for error in field.errors %}
-    <p style="color: #fc7a7a">{{ error }}</p>
-{% endfor %}
+{% include 'messages.html' %}
+{% include 'errors.html' %}
 <form action="" method="POST">
 
     {% csrf_token %}

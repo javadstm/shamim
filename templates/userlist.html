@@ -14,22 +14,15 @@
 </body>
 </html>
 
+
+{% include 'messages.html' %}
+{% include 'errors.html' %}
+
 {% for user in users %}
     <a href="{% url 'edituser' user.id %}"><h2>{{ user.username }}</h2></a>
     <h2> {{ user.last_name }}</h2>
 
 {% endfor %}
-
-
-{% if form.errors %}
-    {% for field in form %}
-        {% for error in field.errors %}
-            <div class="alert alert-danger">
-                <strong>{{ error|escape }}</strong>
-            </div>
-        {% endfor %}
-    {% endfor %}
-{% endif %}
 
 <a href="{% url 'adduser' %}">adduser</a>
 <br><br>
@@ -37,7 +30,3 @@
 <br><br>
 
 
-
-{% if message %}
-    {{ message }}
-{% endif %}

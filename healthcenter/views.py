@@ -38,10 +38,10 @@ def new_Center(request):
 
 @login_required(login_url='login')
 def centerlist(request):
-    centers = HealthCenterModels.objects.all().order_by('created_by_id')
+    centers = HealthCenterModels.objects.all().order_by('-created_by_id')
     search = healthfilter(request.GET, queryset=centers)
     centers = search.qs
-    centerpaginator = Paginator(centers, 10)
+    centerpaginator = Paginator(centers, 7)
     page_num = request.GET.get('page')
     page = centerpaginator.get_page(page_num)
     context = {'centers': centers, 'search': search, 'page': page}

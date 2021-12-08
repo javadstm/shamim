@@ -9,62 +9,101 @@
     <link rel="stylesheet" href="{% static 'list.css' %}"/>
 </head>
 <body>
-<a href="{% url 'logout' %}">Log Out</a>
-<br><br>
-<a href="{% url 'addcenter' %}">addcenter</a>
-<br><br>
-<a href="{% url 'userlist' %}">users</a>
+<header>
+    <div class="constrain header-wrapper">
+        <nav class="evaluate__list-header-nav">
+            <a href="{% url 'userlist' %}">کاربران</a>
 
-    <h3>{{ page.number }}</h3>
+            <a href="{% url 'addcenter' %}">ایجاد مرکز</a>
+        </nav>
+        <a href="{% url 'logout' %}">خروج</a>
+    </div>
 
-<form action="" method="GET">
-    {{ search.form.as_p }}
-    <button class="btn btn-primary" type="submit">search</button>
-</form>
-
-<div class="evaluate__list-table-wrapper">
-    <table class="evaluate__list-table">
-        <thead class="evaluate__list-table-header">
-        <tr>
-            <th>name</th>
-            <th>address</th>
-            <th>phone</th>
-            <th>state</th>
-            <th>region</th>
-            <th>Manage</th>
-        </tr>
-        </thead>
-        <tbody class="evaluate__list-table-body">
-        {% for center in page.object_list %}
+</header>
+<main>
+    <div class="search__container">
+        <form action="" method="GET" class="search__form constrain">
+            <div class="selects-wrapper">
+                {{ search.form.as_p }}
+            </div>
+            <div class="search__button _button">
+                <input type="submit" value="جستجو" class="btn btn-primary"/>
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                        ></path>
+                    </svg>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="evaluate__list-table-wrapper">
+        <table class="evaluate__list-table constrain">
+            <thead class="evaluate__list-table-header">
             <tr>
-                <td>{{ center.name }}</td>
-                <td>{{ center.address }}</td>
-                <td>{{ center.phone }}</td>
-                <td>{{ center.state }}</td>
-                <td>{{ center.city }}</td>
-                <td>
-                    <div class="buttons">
-                        <a href="{% url 'editcenter' center.id %}" class="button edit">edit</a>
-                        <a href="{% url 'deletecenter' center.id %}" class="button delete">delete</a>
-                    </div>
-                </td>
+                <th>نام</th>
+                <th>آدرس</th>
+                <th>شماره تلفن</th>
+                <th>استان</th>
+                <th>شهر</th>
+                <th>مدیریت</th>
             </tr>
-        {% endfor %}
-        </tbody>
+            </thead>
+            <tbody class="evaluate__list-table-body">
+            {% for center in page.object_list %}
+                <tr>
+                    <td>{{ center.name }}</td>
+                    <td>{{ center.address }}</td>
+                    <td>{{ center.phone }}</td>
+                    <td>{{ center.state }}</td>
+                    <td>{{ center.city }}</td>
+                    <td>
+                        <div class="buttons">
+                            <a href="{% url 'editcenter' center.id %}" class="button _button edit">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                            d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                                    ></path>
+                                </svg>
+                            </a>
+                            <a href="{% url 'deletecenter' center.id %}" class="button _button delete">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5-1-1h-5l-1 1H5v2h14V4h-3.5z"
+                                    ></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
 
-    </table>
+        </table>
+        <div class="evaluate__list-table-buttons">
+            <div class="constrain wrapper">
+                {% if page.has_previous %}
+                    <a class="_button" href="{% url 'listcenter' %}?page={{ page.previous_page_number }}">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6.23 20.23 8 22l10-10L8 2 6.23 3.77 14.46 12z"></path>
+                        </svg>
+                    </a>
+                {% endif %}
+                <p>{{ page.number }}</p>
+                {% if page.has_next %}
 
-</div>
-    {% if page.has_previous %}
-        <a href="{% url 'listcenter' %}?page={{ page.previous_page_number }}">previous page </a>
-    {% endif %}
+                    <a class="_button" href=" {% url 'listcenter' %}?page={{ page.next_page_number }}">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17.77 3.77 16 2 6 12l10 10 1.77-1.77L9.54 12z"></path>
+                        </svg>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 
-
-    {% if page.has_next %}
-       <a href=" {% url 'listcenter' %}?page={{ page.next_page_number}}">next page </a>
-    {% endif %}
-
-
+</main>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

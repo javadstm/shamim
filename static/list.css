@@ -1,63 +1,487 @@
+._button, body:focus, button:focus, input:focus, select, select:focus, textarea:focus {
+    outline: 0
+}
+
+header .header-wrapper, header .header-wrapper nav {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal
+}
+
+@font-face {
+    font-family: IRANSansWebFaNum;
+    src: local("IRANSansWebFaNum"), url(./fonts/IRANSansWebFaNum.ttf) format("truetype")
+}
+
 body {
-    background-color: #f8f9fd;
+    font-family: IRANSansWebFaNum !important;
+    direction: rtl;
+    background-color: #f5f5f5
+}
+
+body, button, input, select, textarea {
+    color: #000222;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+a, article, aside, blockquote, body, caption, div, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, img, label, legend, li, menu, nav, p, pre, section, span, ul {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0 !important;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 0
+}
+
+li {
+    list-style: none;
+    display: block
+}
+
+a {
+    text-decoration: none
+}
+
+img, svg {
+    border-style: none
+}
+
+._button {
+    border-radius: 5px;
+    -webkit-box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: .9rem;
+    font-weight: 700;
+    padding: 10px 25px;
+    text-align: center;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: -webkit-transform .2s, -webkit-box-shadow .2s;
+    transition: -webkit-transform .2s, -webkit-box-shadow .2s;
+    transition: transform .2s, box-shadow .2s;
+    transition: transform .2s, box-shadow .2s, -webkit-transform .2s, -webkit-box-shadow .2s;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation
+}
+
+._button:hover {
+    -webkit-box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px)
+}
+
+@media (min-width: 768px) {
+    ._button {
+        padding: 10px 30px
+    }
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    font: inherit;
+    width: 15rem;
+    height: 2.5em;
+    padding: 0 4em 0 1em;
+    background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg) right .8em center/1.4em no-repeat, -webkit-gradient(linear, right top, left top, color-stop(3em, #2e8bc0), color-stop(3em, #b1d4e0));
+    background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg) right .8em center/1.4em no-repeat, linear-gradient(to left, #2e8bc0 3em, #b1d4e0 3em);
+    color: #000;
+    border-radius: .25em;
+    -webkit-box-shadow: 0 0 1em 0 rgba(0, 0, 0, .2);
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, .2);
+    cursor: pointer;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: -webkit-transform .2s, -webkit-box-shadow .2s;
+    transition: -webkit-transform .2s, -webkit-box-shadow .2s;
+    transition: transform .2s, box-shadow .2s;
+    transition: transform .2s, box-shadow .2s, -webkit-transform .2s, -webkit-box-shadow .2s
+}
+
+select option {
+    color: inherit;
+    background-color: #320a28
+}
+
+select::-ms-expand {
+    display: none
+}
+
+select:hover {
+    -webkit-box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px)
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #0c2d48;
+    height: 70px;
+    z-index: 1
+}
+
+header .header-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between
+}
+
+header .header-wrapper a {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #fff;
+    -webkit-transition: color .2s ease;
+    transition: color .2s ease;
+    position: relative;
+    font-weight: 700
+}
+
+header .header-wrapper a:hover {
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px)
+}
+
+header .header-wrapper a::after {
+    display: block;
+    content: "";
+    border-bottom: 2px solid #fff;
+    border-radius: 5px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    -webkit-transition: -webkit-transform .2s ease;
+    transition: -webkit-transform .2s ease;
+    transition: transform .2s ease;
+    transition: transform .2s ease, -webkit-transform .2s ease;
+    -webkit-transform: scale(0);
+    transform: scale(0)
+}
+
+header .header-wrapper a:hover::after {
+    -webkit-transform: scale(1);
+    transform: scale(1)
+}
+
+header .header-wrapper nav {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start
+}
+
+header .header-wrapper nav a:not(:last-child) {
+    margin-left: 1rem
+}
+
+main {
+    padding-top: 70px
+}
+
+.constrain {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    padding: 0 1.2rem
+}
+
+@media (min-width: 881px) {
+    .constrain {
+        width: 85%;
+        max-width: 1100px;
+        padding: 0
+    }
+}
+
+.search__container {
+    width: 100%
+}
+
+@media (max-width: 881px) {
+    .search__container {
+        padding: 0 1.2rem
+    }
+}
+
+.search__form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 2rem 0;
+    background-color: transparent
+}
+
+.search__form .selects-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column
+}
+
+.search__form .selects-wrapper p {
+    margin-bottom: 1.5rem
+}
+
+.search__form .selects-wrapper p label {
+    font-size: 1rem
+}
+
+.search__form .search__button {
+    position: relative;
+    background-color: #b1d4e0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 .6rem 0 0;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer
+}
+
+.search__form .search__button input {
+    height: 2.3rem;
+    font-weight: 700;
+    border: none;
+    color: #000;
+    font-size: .9rem;
+    font-family: inherit;
+    cursor: inherit;
+    background-color: transparent
+}
+
+.search__form .search__button .icon-wrapper {
+    height: 2.3rem;
+    padding: 0 .2rem;
+    margin-right: .2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #2e8bc0
+}
+
+.search__form .search__button .icon-wrapper svg {
+    fill: #fff;
+    width: 25px
+}
+
+@media (min-width: 755px) {
+    .search__form .selects-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center
+    }
+
+    .search__form .selects-wrapper p {
+        margin-bottom: 0;
+        margin-left: 1.5rem
+    }
+
+    .search__form .selects-wrapper p label {
+        font-size: 1rem
+    }
 }
 
 .evaluate__list-table-wrapper {
-    width: 60%;
-    margin: 20px auto;
+    width: 100%
+}
+
+.evaluate__list-table-body tr td .buttons .button.delete svg, .evaluate__list-table-body tr td .buttons .button.edit svg {
+    width: 24px
 }
 
 .evaluate__list-table {
-    width: 100%;
     border: none;
     border-collapse: collapse;
+    font-size: 1rem;
+    overflow: hidden
+}
+
+@media (min-width: 881px) {
+    .evaluate__list-table {
+        border-radius: 5px
+    }
 }
 
 .evaluate__list-table-header {
-    background-color: rgb(153, 177, 156);
+    background-color: #2e8bc0;
+    color: #fff
 }
 
 .evaluate__list-table-header tr th {
     border: none;
-    padding: 8px;
+    padding: 8px
 }
 
 .evaluate__list-table-body {
-    background-color: #fff;
+    background-color: #fff
+}
+
+.evaluate__list-table-body tr:not(:last-child) {
+    border-bottom: 2px solid #2e8bc050
 }
 
 .evaluate__list-table-body tr td {
     padding: 8px;
     text-align: center;
+    font-size: .9rem
 }
 
 .evaluate__list-table-body tr td .buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
-    align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
 }
 
 .evaluate__list-table-body tr td .buttons .button {
-    color: white;
+    color: #fff;
     cursor: pointer;
-    transition: all 0.2s ease;
+    -webkit-transition: fill .2s ease;
+    transition: fill .2s ease;
     margin: 0;
     padding: 4px 8px;
     text-decoration: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center
 }
 
 .evaluate__list-table-body tr td .buttons .button.edit {
-    background-color: rgb(66, 66, 206);
-}
-
-.evaluate__list-table-body tr td .buttons .button.delete {
-    background-color: rgb(223, 87, 87);
+    fill: #2e8bc0;
+    border-radius: 0 5px 5px 0
 }
 
 .evaluate__list-table-body tr td .buttons .button.edit:hover {
-    background-color: rgb(15, 15, 247);
+    fill: #145da0
+}
+
+.evaluate__list-table-body tr td .buttons .button.delete {
+    fill: #2e8bc0;
+    border-radius: 5px 0 0 5px
 }
 
 .evaluate__list-table-body tr td .buttons .button.delete:hover {
-    background-color: rgb(245, 8, 8);
+    fill: #145da0
+}
+
+.evaluate__list-table-buttons {
+    width: 100%
+}
+
+.evaluate__list-table-buttons .wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 1rem 0;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
+.evaluate__list-table-buttons .wrapper p {
+    font-weight: 700;
+    font-size: 1.1rem
+}
+
+.evaluate__list-table-buttons .wrapper a {
+    color: #fff;
+    background-color: #2e8bc0;
+    padding: .4rem .8rem;
+    border-radius: 5px
+}
+
+.evaluate__list-table-buttons .wrapper a svg {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 17px;
+    fill: #fff
+}
+
+.evaluate__list-table-buttons .wrapper a:first-child {
+    margin-left: .5rem
+}
+
+.evaluate__list-table-buttons .wrapper a:last-child {
+    margin-right: .5rem
 }

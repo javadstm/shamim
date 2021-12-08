@@ -10,6 +10,9 @@
 <body>
 
 
+{% include 'messages.html' %}
+{% include 'errors.html' %}
+
         <form method="POST">
             {% csrf_token %}
 		<section class="delete-container">

@@ -8,14 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-{% if message %}
-    {{ message }}
-{% endif %}
 
 
-{% for error in field.errors %}
-    <p style="color: #fc7a7a">{{ error }}</p>
-{% endfor %}
+{% include 'messages.html' %}
+{% include 'errors.html' %}
 <form action="" method="POST">
 
     {% csrf_token %}
